@@ -13,11 +13,13 @@ Mr. Berg will look at all your files to determine what you have completed.  If t
 ## Reflection Questions
 
 1. What is your initial thoughts about the python programming language?
-
+When I first used Python last summer, I found it really easy to use but what made me appreciate it more was when I programmed in C for a bit and found it very frustrating as there aren't too many features and there's a few concepts that I needed to learn in order to use it effectively. Moving back to Python feels like going from high school to middle school.
 
 
 2. Describe some similarities and differences that you found between python and other programming languages you have used in the past?
-
+In C, there are pointers and memory management which aren't in python but C and Python have relatively simple syntax.
+In Python, you don't need to use curly braces as everything is determined by indentation which is very nice and you don't need semicolons and both of those in combination make my life so much easier.
 
 
 3. What are some things that you learned through this assignment?
+I learned about asserting functions to test it and TypeVar, which I believe is a generic?
