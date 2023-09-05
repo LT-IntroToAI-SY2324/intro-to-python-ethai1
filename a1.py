@@ -53,7 +53,7 @@ T = TypeVar("T")
 
 def every_other(lst: List[T]) -> List[T]:
     """Takes a list and returns a list of every other element in the list, starting with
-    the first.
+    the first. 
 
     Args:
         lst - a list of any (constrained by type T to be the same type as the returned
@@ -63,12 +63,6 @@ def every_other(lst: List[T]) -> List[T]:
         a list of every of other item in the original list starting with the first
     """
 
-    # items = List[T]
-    # for i, item in enumerate(lst), start=1):
-    #     if i % 2 == 1:
-    #         items.append(item)
-
-    # return items
     return [item for i, item in enumerate(lst, start=1) if i % 2 == 1]
 
 def sum_list(lst: List[int]) -> int:
@@ -146,19 +140,15 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     """
 
     i = 0
-    while len(lst) > 2:
+    while (len(lst) > 2):
         thirds = i % 3
-
-        print(thirds)
-
-        if thirds == 0:
-            lst.pop(thirds)
-
-        i += 1
-    
+        for name in range(len(lst)):
+            if thirds == 2:
+                lst.pop(name)
+            i += 1
+        
     print(lst)
     return lst
-    # return ["roscoe", "law"]
 
 # this line causes the nested code to be skipped if the file is imported instead of run
 if __name__ == "__main__":
@@ -172,6 +162,12 @@ if __name__ == "__main__":
     assert sum_list([1, 2, 3]) == 6, "sum_list of [1,2,3] failed"
     assert mean([1, 2, 3, 4, 5]) == 3, "mean of [1,2,3,4,5] failed"
     assert median([1, 2, 3, 4, 5]) == 3, "median of [1,2,3,4,5] failed"
+
+    # 2 5 2 1
+    # ["roscoe", "kim", "woz", "solin", "law", "remess"]
+    # ["roscoe", "kim", "solin", "law"]
+    # ["roscoe", "kim", "law"]
+    # ["roscoe", "law"]
 
     names = ["roscoe", "kim", "woz", "solin", "law", "remess"]
     assert duck_duck_goose(names) == ["roscoe", "law"]
