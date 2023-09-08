@@ -5,23 +5,31 @@ import random
 def player_won() -> bool:
 
     if player_choice == "rock" and computer_choice == "scissors":
+        print(f"You chose: {player_choice} - Computer chose: {computer_choice}")
+        print(f"{player_choice} smashes {computer_choice}")
         return True
 
     if player_choice == "scissors" and computer_choice == "paper": 
+        print(f"You chose: {player_choice} - Computer chose: {computer_choice}")
+        print(f"{player_choice} smashes {computer_choice}")
         return True
     
     if player_choice == "paper" and computer_choice == "rock":
+        print(f"You chose: {player_choice} - Computer chose: {computer_choice}")
+        print(f"{player_choice} smashes {computer_choice}")
         return True
     
     if player_choice == computer_choice:
-        print("YOU DRAW!")
+        print(f"You chose: {player_choice} - Computer chose: {computer_choice}")
+        print("You DRAW!")
         return False
     
-    print("YOU LOSE!")
+    print(f"You chose: {player_choice} - Computer chose: {computer_choice}")
+    print(f"{computer_choice} smashes {player_choice}")
+    print("You LOSE!")
     return False
 
 def get_choices() -> tuple:
-
     options = ["rock", "paper", "scissors"]
 
     player_choice = input("ROCK, PAPER, SCISSORS - SHOOT! \n")
