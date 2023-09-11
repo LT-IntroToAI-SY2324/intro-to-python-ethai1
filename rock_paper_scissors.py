@@ -29,10 +29,17 @@ def player_won() -> bool:
     print("You LOSE!")
     return False
 
-def get_choices() -> tuple:
+def get_choices() -> str:
     options = ["rock", "paper", "scissors"]
 
-    player_choice = input("ROCK, PAPER, SCISSORS - SHOOT! \n")
+    while True:
+        player_choice = input("ROCK, PAPER, SCISSORS - SHOOT! \n")
+
+        if player_choice == "rock" or player_choice == "scissors" or player_choice == "paper":
+            break
+
+        print("Invalid response. Please try again!")
+
     computer_choice = random.choice(options)
 
     return player_choice, computer_choice
@@ -45,14 +52,16 @@ while playing:
     if player_won():
         print("YOU WIN!")
 
-    rematch = input("Want to play again? (y/n) \n")
 
-    if rematch == "y":
-        pass
-    elif rematch == "n":
-        playing = False
-    else:
-        print("Invalid response")
-        playing = False
+    while True:
+        rematch = input("Want to play again? (y/n) \n")
+
+        if rematch == "y":
+            break
+        elif rematch == "n":
+            playing = False
+            break
+
+        print("Invalid response. Please try again!")
 
 
