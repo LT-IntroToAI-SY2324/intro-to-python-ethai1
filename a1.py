@@ -13,7 +13,7 @@ check, if you do not complete the generative AI portion of the assignment.
 """
 
 from typing import List, TypeVar
-
+from math import floor, ceil
 
 def absolute(n: int) -> int:
     """Gives the absolute value of the passed in number. Cannot use the built in
@@ -44,7 +44,7 @@ def factorial(n: int) -> int:
 
     # 4 x 3 x 2 x 1
 
-    if n >= 1:
+    if n > 1:
         return n * factorial(n - 1)
     else:
         return 1
@@ -106,8 +106,6 @@ def median(lst: List[int]) -> float:
     Returns:
         the median of the passed in list
     """
-
-    from math import floor, ceil
 
     # 1 2 3 4 5 6 7
 
