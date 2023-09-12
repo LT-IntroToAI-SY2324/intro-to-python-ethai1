@@ -137,24 +137,24 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
         the resulting list after playing duck duck goose
     """
 
-    # i = 0
-    # while (True):
-    #     length = len(lst)
-    #     print(lst)
+    i = 1
+    length = len(lst)
+    while (True):
 
-    #     for l in range(length - 1):
-    #         i += 1
-    #         thirds = i % 3
-    #         if length == 2:
-    #             return lst
-            
-    #         if thirds == 0:
-    #             lst.pop(l)
-    #             length = len(lst)
-    #             break
+        if lst.count(" ") == length - 2:
+            lst = [name for name in lst if name != " "]
+            return lst
+
+        for element in range(length):
+            thirds = i % 3
+
+            if lst[element] == " ":
+                continue
+            if thirds == 0:
+                lst[element] = " "              
+ 
+            i += 1
         
-    # return ["roscoe", "law"]
-
 # this line causes the nested code to be skipped if the file is imported instead of run
 if __name__ == "__main__":
     assert absolute(-1) == 1, "absolute of -1 failed"
@@ -168,13 +168,7 @@ if __name__ == "__main__":
     assert mean([1, 2, 3, 4, 5]) == 3, "mean of [1,2,3,4,5] failed"
     assert median([1, 2, 3, 4, 5]) == 3, "median of [1,2,3,4,5] failed"
 
-    # 2 5 2 1
-    # ["roscoe", "kim", "woz", "solin", "law", "remess"]
-    # ["roscoe", "kim", "solin", "law"]
-    # ["roscoe", "kim", "law"]
-    # ["roscoe", "law"]
-
-    # names = ["roscoe", "kim", "woz", "solin", "law", "remess"]
-    # assert duck_duck_goose(names) == ["roscoe", "law"]
+    names = ["roscoe", "kim", "woz", "solin", "law", "remess"]
+    assert duck_duck_goose(names) == ["roscoe", "law"]
 
     print("All tests passed!")
