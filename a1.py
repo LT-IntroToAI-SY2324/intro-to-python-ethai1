@@ -29,7 +29,7 @@ def absolute(n: int) -> int:
     if n < 0:
         n = -n
 
-    return n
+    return -n if n < 0 else n
 
 def factorial(n: int) -> int:
     """Takes a number n, and computes the factorial n! You can assume the passed in
@@ -41,8 +41,6 @@ def factorial(n: int) -> int:
     Returns:
         factorial of the passed in number
     """
-
-    # 4 x 3 x 2 x 1
 
     if n > 1:
         return n * factorial(n - 1)
@@ -63,7 +61,7 @@ def every_other(lst: List[T]) -> List[T]:
         a list of every of other item in the original list starting with the first
     """
 
-    return [item for i, item in enumerate(lst, start=1) if i % 2 == 1]
+    return lst[::2]
 
 def sum_list(lst: List[int]) -> int:
     """Takes a list of numbers, and returns the sum of the numbers in that list. Cannot
@@ -91,8 +89,8 @@ def mean(lst: List[int]) -> float:
     Returns:
         the mean of the passed in list
     """
-
-    return sum_list(lst) / len(lst)
+    
+    return sum_list(lst) / len(lst) if lst else 0
 
 def median(lst: List[int]) -> float:
     """Takes an ordered list of numbers, and returns the median of the numbers.
@@ -107,14 +105,11 @@ def median(lst: List[int]) -> float:
         the median of the passed in list
     """
 
-    # 1 2 3 4 5 6 7
-
     if len(lst) % 2 == 1:
         middle: int = int((len(lst) - 1) / 2)
         return lst[middle]
     else:
-        middle = len(lst) / 2
-        return (lst[floor(middle)] + lst[ceil(middle)]) / 2
+        return (lst[len(lst) // 2] + lst[(len(lst) // 2) - 1]) / 2
 
 
 def duck_duck_goose(lst: List[str]) -> List[str]:
@@ -138,14 +133,11 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     """
 
     i = 1
-    length = len(lst)
-    while (True):
+    while True:
+        if lst.count(" ") == len(lst) - 2:
+            return [name for name in lst if name != " "]
 
-        if lst.count(" ") == length - 2:
-            lst = [name for name in lst if name != " "]
-            return lst
-
-        for element in range(length):
+        for element in range(len(lst)):
             thirds = i % 3
 
             if lst[element] == " ":
@@ -155,7 +147,6 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
  
             i += 1
         
-# this line causes the nested code to be skipped if the file is imported instead of run
 if __name__ == "__main__":
     assert absolute(-1) == 1, "absolute of -1 failed"
     assert factorial(4) == 24, "factorial of 4 failed"
@@ -165,10 +156,16 @@ if __name__ == "__main__":
         5,
     ], "every_other of [1,2,3,4,5] failed"
     assert sum_list([1, 2, 3]) == 6, "sum_list of [1,2,3] failed"
+    assert sum_list([]) == 0, "sum list of [] failed"
     assert mean([1, 2, 3, 4, 5]) == 3, "mean of [1,2,3,4,5] failed"
+    assert mean([]) == 0, "mean of [] failed"
     assert median([1, 2, 3, 4, 5]) == 3, "median of [1,2,3,4,5] failed"
+    assert median([1, 2, 3, 4, 5, 6]) == 3.5, "median of [1,2,3,4,5,6] failed"
 
     names = ["roscoe", "kim", "woz", "solin", "law", "remess"]
     assert duck_duck_goose(names) == ["roscoe", "law"]
+
+    names = ["Liam", "Olivia", "Noah", "Emma", "Oliver", "Charlotte", "James", "Amelia", "Elijah", "Sophia"]
+    assert duck_duck_goose(names) == ["Emma", "Sophia"]
 
     print("All tests passed!")
